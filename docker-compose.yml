@@ -1,0 +1,56 @@
+services:
+  database:
+    user: root
+    container_name: mssqls_db_skinet
+    build: "docker/database/"
+    environment:
+      ACCEPT_EULA: Y
+      MSSQL_SA_PASSWORD: <YourStrong@Passw0rd>
+    ports:
+      - "1433:1433"
+    volumes:
+      - sql-server-data:/var/opt/mssql/data
+    hostname: sql-server
+    restart: always
+    networks:
+      - skinet_network
+  
+  api:
+    container_name: api_skinet
+    build: "./src/Api.Skinet/"
+    networks:
+      - skinet_network
+    # Remove temporary port expouse after development
+    ports:
+      - "8080:8080"
+
+  server:
+    user: root
+    container_name: nginx_skinet
+    image: nginx:stable-alpine3.17
+    networks:
+      - skinet_network
+  
+  memory_db:
+    container_name: redis_skinet
+    image: redis:alpine3.19
+    volumes: 
+      - redis-db-data:/var/opt/redis/data
+    networks:
+      - skinet_network
+  
+  broker:
+    container_name: rabbitmq_skinet
+    image: rabbitmq:3.9.29-management
+    networks:
+      - skinet_network
+
+volumes:
+  sql-server-data:  
+  redis-db-data:
+
+networks:
+  skinet_network:
+    name: skinet_network
+    driver: bridge
+    external: false
