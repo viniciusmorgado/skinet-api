@@ -1,16 +1,15 @@
 {
   "version": 2,
-  "dgSpecHash": "6xVbRu4iFoSgm0O33+iyEgb69JktTxEwspMn0Zc8hsxv9slT4n/OrMOEL/LPGuTKAHUF6FckU+NxheupnEDcSQ==",
+  "dgSpecHash": "qN4dfbMk+EOeQKFNZGbu82MM7lSUgzxkHMX6mmxH2Wsu1n2PSs/cWPulHyRE7vYhsuH0JJZiwb282gKT+lWNvA==",
   "success": true,
-  "projectFilePath": "/home/morgado/Documents/Projects/skinet-e-commerce/src/Api.Skinet/Api.Skinet.csproj",
+  "projectFilePath": "/home/morgado/Documents/Projects/skinet-e-commerce/skinet-api/src/Api.Skinet/Api.Skinet.csproj",
   "expectedPackageFiles": [
     "/home/morgado/.nuget/packages/microsoft.extensions.apidescription.server/6.0.5/microsoft.extensions.apidescription.server.6.0.5.nupkg.sha512",
     "/home/morgado/.nuget/packages/microsoft.openapi/1.2.3/microsoft.openapi.1.2.3.nupkg.sha512",
     "/home/morgado/.nuget/packages/swashbuckle.aspnetcore/6.4.0/swashbuckle.aspnetcore.6.4.0.nupkg.sha512",
     "/home/morgado/.nuget/packages/swashbuckle.aspnetcore.swagger/6.4.0/swashbuckle.aspnetcore.swagger.6.4.0.nupkg.sha512",
     "/home/morgado/.nuget/packages/swashbuckle.aspnetcore.swaggergen/6.4.0/swashbuckle.aspnetcore.swaggergen.6.4.0.nupkg.sha512",
-    "/home/morgado/.nuget/packages/swashbuckle.aspnetcore.swaggerui/6.4.0/swashbuckle.aspnetcore.swaggerui.6.4.0.nupkg.sha512",
-    "/home/morgado/.nuget/packages/microsoft.aspnetcore.app.ref/8.0.0/microsoft.aspnetcore.app.ref.8.0.0.nupkg.sha512"
+    "/home/morgado/.nuget/packages/swashbuckle.aspnetcore.swaggerui/6.4.0/swashbuckle.aspnetcore.swaggerui.6.4.0.nupkg.sha512"
   ],
   "logs": []
 }
