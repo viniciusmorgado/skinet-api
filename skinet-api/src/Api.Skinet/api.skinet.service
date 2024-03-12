@@ -1,0 +1,12 @@
+﻿[Unit]
+Description=API Skinet
+Requires=docker.service
+After=docker.service
+
+[Service]
+Restart=always
+ExecStart=/usr/bin/docker start api-skinet
+ExecStop=/usr/bin/docker stop api-skinet
+
+[Install]
+WantedBy=multi-user.target

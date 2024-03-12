@@ -1,31 +1,30 @@
 services:
-  # database:
-  #   user: root
-  #   container_name: mssqls_db_skinet
-  #   build: "docker/database/"
-  #   environment:
-  #     ACCEPT_EULA: Y
-  #     MSSQL_SA_PASSWORD: <YourStrong@Passw0rd>
-  #   ports:
-  #     - "1433:1433"
-  #   volumes:
-  #     - sql-server-data:/var/opt/mssql/data
-  #   hostname: sql-server
-  #   restart: always
-  #   networks:
-  #     - skinet_network
-  
   api:
-    container_name: api_skinet
-    build: "./src/Api.Skinet/"
-    volumes: 
-      - nixpkg:/etc/nix
+    container_name: api-skinet
+    image: vinimorgado/skinet-api:latest
     networks:
-      - skinet_network
-    # Remove temporary port expouse after development
+      - skinet-network
     ports:
-      - "8080:8080"
+      - "10401:8080"
+    depends_on: 
+      - database
 
+
+  database:
+     container_name: database-skinet
+     image: mcr.microsoft.com/mssql/server:2022-latest
+     networks:
+       - skinet-network
+     ports:
+       - "10402:1433"
+     environment:
+       ACCEPT_EULA: Y
+       MSSQL_SA_PASSWORD: <YourStrong@Passw0rd>
+     volumes:
+       - sql-server-data:/var/opt/mssql/data
+     restart: always
+     user: root
+  
   # server:
   #   user: root
   #   container_name: nginx_skinet
@@ -48,13 +47,12 @@ services:
   #     - skinet_network
 
 volumes:
-  nixpkg:
-  # sql-server-data:  
+  sql-server-data:  
   # redis-db-data:
 
 
 networks:
-  skinet_network:
-    name: skinet_network
+  skinet-network:
+    name: skinet-network
     driver: bridge
     external: false
