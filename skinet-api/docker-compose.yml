@@ -5,7 +5,7 @@ services:
     networks:
       - skinet-network
     ports:
-      - "10401:8080"
+      - "10401:10401"
     depends_on: 
       - database
 
@@ -15,8 +15,8 @@ services:
      image: mcr.microsoft.com/mssql/server:2022-latest
      networks:
        - skinet-network
-     ports:
-       - "10402:1433"
+    #  ports:
+    #    - "10402:1433"
      environment:
        ACCEPT_EULA: Y
        MSSQL_SA_PASSWORD: <YourStrong@Passw0rd>
