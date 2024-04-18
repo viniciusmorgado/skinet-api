@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\git\\skinet-e-commerce\\skinet-api\\src\\Api.Skinet\\Api.Skinet.csproj": {}
+    "/home/morgado/Documents/Projects/skinet-e-commerce/skinet-api/src/Api.Skinet/Api.Skinet.csproj": {}
   },
   "projects": {
-    "C:\\git\\skinet-e-commerce\\skinet-api\\src\\Api.Skinet\\Api.Skinet.csproj": {
+    "/home/morgado/Documents/Projects/skinet-e-commerce/skinet-api/src/Api.Skinet/Api.Skinet.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\git\\skinet-e-commerce\\skinet-api\\src\\Api.Skinet\\Api.Skinet.csproj",
+        "projectUniqueName": "/home/morgado/Documents/Projects/skinet-e-commerce/skinet-api/src/Api.Skinet/Api.Skinet.csproj",
         "projectName": "Api.Skinet",
-        "projectPath": "C:\\git\\skinet-e-commerce\\skinet-api\\src\\Api.Skinet\\Api.Skinet.csproj",
-        "packagesPath": "C:\\Users\\vinic\\.nuget\\packages\\",
-        "outputPath": "C:\\git\\skinet-e-commerce\\skinet-api\\src\\Api.Skinet\\obj\\",
+        "projectPath": "/home/morgado/Documents/Projects/skinet-e-commerce/skinet-api/src/Api.Skinet/Api.Skinet.csproj",
+        "packagesPath": "/home/morgado/.nuget/packages/",
+        "outputPath": "/home/morgado/Documents/Projects/skinet-e-commerce/skinet-api/src/Api.Skinet/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\vinic\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "/home/morgado/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
@@ -67,7 +67,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.202/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/8.0.204/PortableRuntimeIdentifierGraph.json"
         }
       }
     }
