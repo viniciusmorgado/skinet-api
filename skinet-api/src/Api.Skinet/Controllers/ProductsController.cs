@@ -1,15 +1,18 @@
+using Api.Skinet.Data;
+using Api.Skinet.Entities;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Api.Skinet.Controllers;
 
 [ApiController]
 [Route("api/[controller]")]
-public class ProductsController : ControllerBase
+public class ProductsController(StoreContext _context) : ControllerBase
 {
+
     [HttpGet]
-    public string GetProducts()
+    public ActionResult<List<Product>> GetProducts()
     {
-        return "this will be a list of products";
+        return _context.Products.ToList();
     }
 
     [HttpGet("{id:int}")]
