@@ -1,3 +1,4 @@
 - Replace id int for guid
 - Move different layers of default classes to a private nuget package
 - Replace the guid to a base class, including createdat and updatedat
+- Convert all mapping classes to structs

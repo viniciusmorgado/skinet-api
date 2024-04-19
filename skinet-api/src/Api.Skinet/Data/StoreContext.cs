@@ -1,14 +1,18 @@
 using Api.Skinet.Entities;
+using API.Skinet.Data.Mapping;
 using Microsoft.EntityFrameworkCore;
 
 namespace Api.Skinet.Data;
 
-public class StoreContext : DbContext
+public partial class StoreContext(DbContextOptions<StoreContext> options) : DbContext(options)
 {
-    public StoreContext(DbContextOptions options) : base(options)
-    {
+    public DbSet<Product> Products { get; set; }
 
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    {
+        modelBuilder.ApplyConfiguration(new ProductMap());
+        OnModelCreatingPartial(modelBuilder);
     }
 
-    public DbSet<Product> Products { get; set; }
+    partial void OnModelCreatingPartial(ModelBuilder modelBuilder);
 }
