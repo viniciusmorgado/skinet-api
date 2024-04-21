@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/home/morgado/Documents/Projects/skinet-e-commerce/skinet-api/src/Api.Skinet/Api.Skinet.csproj": {}
+    "/home/morgado/Documents/Projects/per-lang/dotnet/skinet-e-commerce/skinet-api/src/Api.Skinet/Api.Skinet.csproj": {}
   },
   "projects": {
-    "/home/morgado/Documents/Projects/skinet-e-commerce/skinet-api/src/Api.Skinet/Api.Skinet.csproj": {
+    "/home/morgado/Documents/Projects/per-lang/dotnet/skinet-e-commerce/skinet-api/src/Api.Skinet/Api.Skinet.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/home/morgado/Documents/Projects/skinet-e-commerce/skinet-api/src/Api.Skinet/Api.Skinet.csproj",
+        "projectUniqueName": "/home/morgado/Documents/Projects/per-lang/dotnet/skinet-e-commerce/skinet-api/src/Api.Skinet/Api.Skinet.csproj",
         "projectName": "Api.Skinet",
-        "projectPath": "/home/morgado/Documents/Projects/skinet-e-commerce/skinet-api/src/Api.Skinet/Api.Skinet.csproj",
+        "projectPath": "/home/morgado/Documents/Projects/per-lang/dotnet/skinet-e-commerce/skinet-api/src/Api.Skinet/Api.Skinet.csproj",
         "packagesPath": "/home/morgado/.nuget/packages/",
-        "outputPath": "/home/morgado/Documents/Projects/skinet-e-commerce/skinet-api/src/Api.Skinet/obj/",
+        "outputPath": "/home/morgado/Documents/Projects/per-lang/dotnet/skinet-e-commerce/skinet-api/src/Api.Skinet/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/home/morgado/.nuget/NuGet/NuGet.Config"
@@ -32,11 +32,6 @@
           "warnAsError": [
             "NU1605"
           ]
-        },
-        "restoreAuditProperties": {
-          "enableAudit": "true",
-          "auditLevel": "low",
-          "auditMode": "direct"
         }
       },
       "frameworks": {
@@ -77,7 +72,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/8.0.204/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/lib/dotnet/sdk/8.0.103/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

@@ -1,6 +1,7 @@
 using Api.Skinet.Data;
 using Api.Skinet.Entities;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace Api.Skinet.Controllers;
 
@@ -10,15 +11,15 @@ public class ProductsController(StoreContext _context) : ControllerBase
 {
 
     [HttpGet]
-    public ActionResult<List<Product>> GetProducts()
+    public async Task<ActionResult<List<Product>>> GetProducts()
     {
-        return _context.Products.ToList();
+        return await _context.Products.ToListAsync();
     }
 
     [HttpGet("{id:int}")]
     //[Route("{id:int}")]
-    public string GetProductById(int id)
+    public async Task<ActionResult<Product>> GetProductById(int id)
     {
-        return "this will be a single product";
+        return await _context.Products.FindAsync(id);
     }
 }

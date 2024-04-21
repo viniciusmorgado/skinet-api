@@ -1,20 +1,22 @@
 services:
-  api:
-    container_name: api-skinet
-    image: vinimorgado/skinet-api:latest
-    networks:
-      - skinet-network
-    ports:
-      - "10401:10401"
-    depends_on: 
-      - database
+  # api:
+  #   container_name: api-skinet
+  #   image: vinimorgado/skinet-api:latest
+  #   networks:
+  #     - skinet-network
+  #   ports:
+  #     - "10401:10401"
+  #   depends_on: 
+  #     - sql-database
 
 
-  database:
+  sql-database:
      container_name: database-skinet
      image: mcr.microsoft.com/mssql/server:2022-latest
      networks:
        - skinet-network
+     ports:
+      - "1433:1433" # TODO: Remove after development
      environment:
        ACCEPT_EULA: Y
        MSSQL_SA_PASSWORD: <YourStrong@Passw0rd>
@@ -30,7 +32,7 @@ services:
   #   networks:
   #     - skinet_network
   
-  # memory_db:
+  # memory-db:
   #   container_name: redis_skinet
   #   image: redis:alpine3.19
   #   volumes: 
