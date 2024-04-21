@@ -1,0 +1,46 @@
+using Domain.Skinet.Entities;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Builders;
+
+namespace Infrastructure.Skinet.Data.Mapping;
+
+public class ProductBrandMap : IEntityTypeConfiguration<ProductBrand>
+{
+    public void Configure(EntityTypeBuilder<ProductBrand> builder)
+    {
+        builder.HasKey(p => p.Id);
+
+        builder.Property(p => p.Name)
+               .IsRequired()
+               .HasMaxLength(100);
+#if DEBUG
+        builder.HasData(
+            new ProductBrand
+            {
+                Id = 1,
+                Name = "Product Type 1"
+            },
+            new ProductBrand
+            {
+                Id = 2,
+                Name = "Product Brand 2"
+            },
+            new ProductBrand
+            {
+                Id = 3,
+                Name = "Product Brand 3"
+            },
+            new ProductBrand
+            {
+                Id = 4,
+                Name = "Product Brand 3"
+            },
+            new ProductBrand
+            {
+                Id = 5,
+                Name = "Product Brand 4"
+            }
+        );
+#endif
+    }
+}

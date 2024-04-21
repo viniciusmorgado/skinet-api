@@ -1,6 +1,7 @@
 {
     "conventionalCommits.scopes": [
         "controllers",
-        "architecture"
+        "architecture",
+        "Products"
     ]
 }

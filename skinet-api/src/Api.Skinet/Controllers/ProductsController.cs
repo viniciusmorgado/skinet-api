@@ -1,5 +1,6 @@
 using Api.Skinet.Data;
 using Domain.Skinet.Entities;
+using Domain.Skinet.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -7,19 +8,17 @@ namespace Api.Skinet.Controllers;
 
 [ApiController]
 [Route("api/[controller]")]
-public class ProductsController(StoreContext _context) : ControllerBase
+public class ProductsController(IProductRepository _repository) : ControllerBase
 {
-
     [HttpGet]
     public async Task<ActionResult<List<Product>>> GetProducts()
     {
-        return await _context.Products.ToListAsync();
+        return Ok(await _repository.GetProductsAsync());
     }
 
     [HttpGet("{id:int}")]
-    //[Route("{id:int}")]
     public async Task<ActionResult<Product>> GetProductById(int id)
     {
-        return await _context.Products.FindAsync(id);
+        return Ok(await _repository.GetProductByIdAsync(id));
     }
 }

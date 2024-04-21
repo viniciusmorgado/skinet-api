@@ -1,6 +1,31 @@
 - Replace id int for guid
+
 - Move different layers of default classes to a private nuget package
+
 - Replace the guid to a base class, including createdat and updatedat
+
 - Convert all mapping classes to structs
+
 - Use IActionResult interface instead of ActionResult for the controllers????
+
 - Use two attributes route instead of one???
+
+- Replace manually defined AddScoped methods like this:
+
+builder.Services.AddScoped<IProductRepository, ProductRepository>();
+
+For automatically define methods reading the repository folder
+
+- Move DbSet properties of the context from normal to virtual methods and understand how the lazy loading of it works
+
+From 
+
+public DbSet<ProductType> ProductTypes { get; set; }
+
+To:
+
+public virtual DbSet<ProductType> ProductTypes { get; set; }
+
+https://stackoverflow.com/questions/24079133/what-is-the-difference-between-dbset-and-virtual-dbset
+
+- Add a ProductFactory private method to ProductMap to seed table in dev env

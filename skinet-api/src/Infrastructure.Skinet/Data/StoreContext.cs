@@ -1,18 +1,19 @@
+using System.Reflection;
 using Domain.Skinet.Entities;
 using Infrastructure.Skinet.Data.Mapping;
 using Microsoft.EntityFrameworkCore;
 
 namespace Api.Skinet.Data;
 
-public partial class StoreContext(DbContextOptions<StoreContext> options) : DbContext(options)
+public class StoreContext(DbContextOptions<StoreContext> options) : DbContext(options)
 {
     public DbSet<Product> Products { get; set; }
+    public DbSet<ProductBrand> ProductBrands { get; set; }
+    public DbSet<ProductType> ProductTypes { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        modelBuilder.ApplyConfiguration(new ProductMap());
-        OnModelCreatingPartial(modelBuilder);
+        base.OnModelCreating(modelBuilder);
+        modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
     }
-
-    partial void OnModelCreatingPartial(ModelBuilder modelBuilder);
 }
