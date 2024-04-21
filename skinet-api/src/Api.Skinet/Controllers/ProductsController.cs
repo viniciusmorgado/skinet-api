@@ -1,5 +1,5 @@
 using Api.Skinet.Data;
-using Api.Skinet.Entities;
+using Domain.Skinet.Entities;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 

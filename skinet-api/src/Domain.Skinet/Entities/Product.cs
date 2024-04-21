@@ -1,4 +1,4 @@
-namespace Api.Skinet.Entities;
+namespace Domain.Skinet.Entities;
 
 public class Product
 {

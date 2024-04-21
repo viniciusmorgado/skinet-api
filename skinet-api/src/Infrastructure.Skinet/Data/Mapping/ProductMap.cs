@@ -1,8 +1,8 @@
-using Api.Skinet.Entities;
+using Domain.Skinet.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace API.Skinet.Data.Mapping;
+namespace Infrastructure.Skinet.Data.Mapping;
 
 public class ProductMap : IEntityTypeConfiguration<Product>
 {

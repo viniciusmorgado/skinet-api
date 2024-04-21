@@ -1,5 +1,5 @@
-using Api.Skinet.Entities;
-using API.Skinet.Data.Mapping;
+using Domain.Skinet.Entities;
+using Infrastructure.Skinet.Data.Mapping;
 using Microsoft.EntityFrameworkCore;
 
 namespace Api.Skinet.Data;

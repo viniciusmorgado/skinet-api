@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "DxJzI6o6OVZneH/Gb8/fTFrIBaqmKqr+6Zy9ajAhg7DR4A5fk66W3gT2AFCIwUDFPkQKtlUwiTnn5q8UTgl92g==",
+  "dgSpecHash": "EqgiOriSA1OgfOzFBAHCXVURjksGoWI5OX4f8VogePG9RPhy1RQQlqd0jTLWlDajH6er/AmmUOfIi/NbweN9jA==",
   "success": true,
   "projectFilePath": "/home/morgado/Documents/Projects/per-lang/dotnet/skinet-e-commerce/skinet-api/src/Api.Skinet/Api.Skinet.csproj",
   "expectedPackageFiles": [
