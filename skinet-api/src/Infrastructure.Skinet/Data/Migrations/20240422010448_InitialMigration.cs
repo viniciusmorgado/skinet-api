@@ -73,7 +73,7 @@ namespace Infrastructure.Skinet.Data.Migrations
                 columns: new[] { "Id", "Name" },
                 values: new object[,]
                 {
-                    { 1, "Product Type 1" },
+                    { 1, "Product Brand 1" },
                     { 2, "Product Brand 2" },
                     { 3, "Product Brand 3" },
                     { 4, "Product Brand 3" },
@@ -97,11 +97,11 @@ namespace Infrastructure.Skinet.Data.Migrations
                 columns: new[] { "Id", "Description", "Name", "Picture", "Price", "ProductBrandId", "ProductTypeId" },
                 values: new object[,]
                 {
-                    { 1, "This is a description for product 1", "Product 1", "https://image.com/placeholder.jpg", 0.353013591290837m, 1, 1 },
-                    { 2, "This is a description for product 2", "Product 2", "https://image.com/placeholder.jpg", 0.427036115875371m, 1, 1 },
-                    { 3, "This is a description for product 3", "Product 3", "https://image.com/placeholder.jpg", 0.385233264187726m, 1, 1 },
-                    { 4, "This is a description for product 4", "Product 4", "https://image.com/placeholder.jpg", 0.702425365155001m, 1, 1 },
-                    { 5, "This is a description for product 5", "Product 5", "https://image.com/placeholder.jpg", 0.556746006091056m, 1, 1 }
+                    { 1, "This is a description for product 1", "Product 1", "https://image.com/placeholder.jpg", 0.294647975440991m, 1, 1 },
+                    { 2, "This is a description for product 2", "Product 2", "https://image.com/placeholder.jpg", 0.368829992693068m, 2, 2 },
+                    { 3, "This is a description for product 3", "Product 3", "https://image.com/placeholder.jpg", 0.881426648320186m, 3, 3 },
+                    { 4, "This is a description for product 4", "Product 4", "https://image.com/placeholder.jpg", 0.748636457843189m, 4, 4 },
+                    { 5, "This is a description for product 5", "Product 5", "https://image.com/placeholder.jpg", 0.824966288143047m, 5, 5 }
                 });
 
             migrationBuilder.CreateIndex(

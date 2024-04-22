@@ -1,8 +1,6 @@
-using Api.Skinet.Data;
 using Domain.Skinet.Entities;
 using Domain.Skinet.Interfaces;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 
 namespace Api.Skinet.Controllers;
 
@@ -11,7 +9,7 @@ namespace Api.Skinet.Controllers;
 public class ProductsController(IProductRepository _repository) : ControllerBase
 {
     [HttpGet]
-    public async Task<ActionResult<List<Product>>> GetProducts()
+    public async Task<ActionResult<IReadOnlyList<Product>>> GetProducts()
     {
         return Ok(await _repository.GetProductsAsync());
     }
@@ -20,5 +18,17 @@ public class ProductsController(IProductRepository _repository) : ControllerBase
     public async Task<ActionResult<Product>> GetProductById(int id)
     {
         return Ok(await _repository.GetProductByIdAsync(id));
+    }
+
+    [HttpGet("brands")]
+    public async Task<ActionResult<IReadOnlyList<ProductBrand>>> GetProductBrands()
+    {
+        return Ok(await _repository.GetProductBrandsAsync());
+    }
+
+    [HttpGet("types")]
+    public async Task<ActionResult<IReadOnlyList<ProductType>>> GetProductTypes()
+    {
+        return Ok(await _repository.GetProductTypesAsync());
     }
 }

@@ -51,8 +51,8 @@ public class ProductMap : IEntityTypeConfiguration<Product>
                 Description = "This is a description for product 2",
                 Price = (decimal)new Random().NextDouble(),
                 Picture = "https://image.com/placeholder.jpg",
-                ProductBrandId = 1,
-                ProductTypeId = 1
+                ProductBrandId = 2,
+                ProductTypeId = 2
             },
             new Product
             {
@@ -61,8 +61,8 @@ public class ProductMap : IEntityTypeConfiguration<Product>
                 Description = "This is a description for product 3",
                 Price = (decimal)new Random().NextDouble(),
                 Picture = "https://image.com/placeholder.jpg",
-                ProductBrandId = 1,
-                ProductTypeId = 1
+                ProductBrandId = 3,
+                ProductTypeId = 3
             },
             new Product
             {
@@ -71,8 +71,8 @@ public class ProductMap : IEntityTypeConfiguration<Product>
                 Description = "This is a description for product 4",
                 Price = (decimal)new Random().NextDouble(),
                 Picture = "https://image.com/placeholder.jpg",
-                ProductBrandId = 1,
-                ProductTypeId = 1
+                ProductBrandId = 4,
+                ProductTypeId = 4
             },
             new Product
             {
@@ -81,8 +81,8 @@ public class ProductMap : IEntityTypeConfiguration<Product>
                 Description = "This is a description for product 5",
                 Price = (decimal)new Random().NextDouble(),
                 Picture = "https://image.com/placeholder.jpg",
-                ProductBrandId = 1,
-                ProductTypeId = 1
+                ProductBrandId = 5,
+                ProductTypeId = 5
             }
 #endif
         );

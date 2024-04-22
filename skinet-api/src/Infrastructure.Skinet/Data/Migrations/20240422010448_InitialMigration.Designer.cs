@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Infrastructure.Skinet.Data.Migrations
 {
     [DbContext(typeof(StoreContext))]
-    [Migration("20240421230706_InitialMigration")]
+    [Migration("20240422010448_InitialMigration")]
     partial class InitialMigration
     {
         /// <inheritdoc />
@@ -70,7 +70,7 @@ namespace Infrastructure.Skinet.Data.Migrations
                             Description = "This is a description for product 1",
                             Name = "Product 1",
                             Picture = "https://image.com/placeholder.jpg",
-                            Price = 0.353013591290837m,
+                            Price = 0.294647975440991m,
                             ProductBrandId = 1,
                             ProductTypeId = 1
                         },
@@ -80,9 +80,9 @@ namespace Infrastructure.Skinet.Data.Migrations
                             Description = "This is a description for product 2",
                             Name = "Product 2",
                             Picture = "https://image.com/placeholder.jpg",
-                            Price = 0.427036115875371m,
-                            ProductBrandId = 1,
-                            ProductTypeId = 1
+                            Price = 0.368829992693068m,
+                            ProductBrandId = 2,
+                            ProductTypeId = 2
                         },
                         new
                         {
@@ -90,9 +90,9 @@ namespace Infrastructure.Skinet.Data.Migrations
                             Description = "This is a description for product 3",
                             Name = "Product 3",
                             Picture = "https://image.com/placeholder.jpg",
-                            Price = 0.385233264187726m,
-                            ProductBrandId = 1,
-                            ProductTypeId = 1
+                            Price = 0.881426648320186m,
+                            ProductBrandId = 3,
+                            ProductTypeId = 3
                         },
                         new
                         {
@@ -100,9 +100,9 @@ namespace Infrastructure.Skinet.Data.Migrations
                             Description = "This is a description for product 4",
                             Name = "Product 4",
                             Picture = "https://image.com/placeholder.jpg",
-                            Price = 0.702425365155001m,
-                            ProductBrandId = 1,
-                            ProductTypeId = 1
+                            Price = 0.748636457843189m,
+                            ProductBrandId = 4,
+                            ProductTypeId = 4
                         },
                         new
                         {
@@ -110,9 +110,9 @@ namespace Infrastructure.Skinet.Data.Migrations
                             Description = "This is a description for product 5",
                             Name = "Product 5",
                             Picture = "https://image.com/placeholder.jpg",
-                            Price = 0.556746006091056m,
-                            ProductBrandId = 1,
-                            ProductTypeId = 1
+                            Price = 0.824966288143047m,
+                            ProductBrandId = 5,
+                            ProductTypeId = 5
                         });
                 });
 
@@ -137,7 +137,7 @@ namespace Infrastructure.Skinet.Data.Migrations
                         new
                         {
                             Id = 1,
-                            Name = "Product Type 1"
+                            Name = "Product Brand 1"
                         },
                         new
                         {

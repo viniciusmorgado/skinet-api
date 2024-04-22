@@ -29,3 +29,5 @@ public virtual DbSet<ProductType> ProductTypes { get; set; }
 https://stackoverflow.com/questions/24079133/what-is-the-difference-between-dbset-and-virtual-dbset
 
 - Add a ProductFactory private method to ProductMap to seed table in dev env
+
+- Add real products for demonstration

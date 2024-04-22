@@ -18,7 +18,7 @@ public class ProductBrandMap : IEntityTypeConfiguration<ProductBrand>
             new ProductBrand
             {
                 Id = 1,
-                Name = "Product Type 1"
+                Name = "Product Brand 1"
             },
             new ProductBrand
             {
