@@ -15,24 +15,25 @@ public class ProductsController(IGenericRepository<Product> _productRepository,
     public async Task<ActionResult<IReadOnlyList<Product>>> GetProducts()
     {
         var spec = new ProductsWithTypesAndBrandsSpec();
-        return Ok(await _productRepository.ListAsync(spec));
+        return Ok(await _productRepository.GetEntityListWithSpecsAsync(spec));
     }
 
     [HttpGet("{id:int}")]
     public async Task<ActionResult<Product>> GetProductById(int id)
     {
-        return Ok(await _productRepository.GetByIdAsync(id));
+        var spec = new ProductsWithTypesAndBrandsSpec(id);
+        return Ok(await _productRepository.GetEntityWithSpecsAsync(spec));
     }
 
     [HttpGet("brands")]
     public async Task<ActionResult<IReadOnlyList<ProductBrand>>> GetProductBrands()
     {
-        return Ok(await _productBrandRepository.ListAllAsync());
+        return Ok(await _productBrandRepository.GetEntityListAsync());
     }
 
     [HttpGet("types")]
     public async Task<ActionResult<IReadOnlyList<ProductType>>> GetProductTypes()
     {
-        return Ok(await _productTypeRepository.ListAllAsync());
+        return Ok(await _productTypeRepository.GetEntityListAsync());
     }
 }

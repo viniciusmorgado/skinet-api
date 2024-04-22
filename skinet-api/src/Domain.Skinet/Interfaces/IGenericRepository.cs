@@ -5,8 +5,8 @@ namespace Domain.Skinet.Interfaces;
 
 public interface IGenericRepository<T> where T : Entity
 {
-    Task<T> GetByIdAsync(int id);
-    Task<IReadOnlyList<T>> ListAllAsync();
-    Task<T> GetEntityWithSpecs(ISpecification<T> spec);
-    Task<IReadOnlyList<T>> ListAsync(ISpecification<T> spec);
+    Task<T> GetEntityByIdAsync(int id);
+    Task<IReadOnlyList<T>> GetEntityListAsync();
+    Task<T> GetEntityWithSpecsAsync(ISpecification<T> spec);
+    Task<IReadOnlyList<T>> GetEntityListWithSpecsAsync(ISpecification<T> spec);
 }
