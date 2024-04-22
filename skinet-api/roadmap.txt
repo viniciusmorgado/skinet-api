@@ -31,3 +31,5 @@ https://stackoverflow.com/questions/24079133/what-is-the-difference-between-dbse
 - Add a ProductFactory private method to ProductMap to seed table in dev env
 
 - Add real products for demonstration
+
+- Implements CQRS using generic repository and specification without the mediart

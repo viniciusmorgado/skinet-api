@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Api.Skinet")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+376cfd8b5213ead1ac990f37608f2087d5db8ce9")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+0a0c6e09a200bf0a9385faff90425295750d226e")]
 [assembly: System.Reflection.AssemblyProductAttribute("Api.Skinet")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Api.Skinet")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
