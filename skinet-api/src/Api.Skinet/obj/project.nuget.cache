@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "EqgiOriSA1OgfOzFBAHCXVURjksGoWI5OX4f8VogePG9RPhy1RQQlqd0jTLWlDajH6er/AmmUOfIi/NbweN9jA==",
+  "dgSpecHash": "35kQb/Iz/YZugbT3kRvwTeJASiSIz27seLt9WJ2J2r6AGVvkccsQTvKk5eTgU6KrqG+Jlj6YsDKeoeJQ03/nZQ==",
   "success": true,
   "projectFilePath": "/home/morgado/Documents/Projects/per-lang/dotnet/skinet-e-commerce/skinet-api/src/Api.Skinet/Api.Skinet.csproj",
   "expectedPackageFiles": [
+    "/home/morgado/.nuget/packages/automapper/13.0.1/automapper.13.0.1.nupkg.sha512",
     "/home/morgado/.nuget/packages/azure.core/1.35.0/azure.core.1.35.0.nupkg.sha512",
     "/home/morgado/.nuget/packages/azure.identity/1.10.3/azure.identity.1.10.3.nupkg.sha512",
     "/home/morgado/.nuget/packages/humanizer.core/2.14.1/humanizer.core.2.14.1.nupkg.sha512",

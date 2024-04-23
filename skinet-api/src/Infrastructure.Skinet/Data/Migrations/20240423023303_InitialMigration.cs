@@ -97,11 +97,11 @@ namespace Infrastructure.Skinet.Data.Migrations
                 columns: new[] { "Id", "Description", "Name", "Picture", "Price", "ProductBrandId", "ProductTypeId" },
                 values: new object[,]
                 {
-                    { 1, "This is a description for product 1", "Product 1", "https://image.com/placeholder.jpg", 0.294647975440991m, 1, 1 },
-                    { 2, "This is a description for product 2", "Product 2", "https://image.com/placeholder.jpg", 0.368829992693068m, 2, 2 },
-                    { 3, "This is a description for product 3", "Product 3", "https://image.com/placeholder.jpg", 0.881426648320186m, 3, 3 },
-                    { 4, "This is a description for product 4", "Product 4", "https://image.com/placeholder.jpg", 0.748636457843189m, 4, 4 },
-                    { 5, "This is a description for product 5", "Product 5", "https://image.com/placeholder.jpg", 0.824966288143047m, 5, 5 }
+                    { 1, "This is a description for product 1", "Product 1", "images/products/sb-ang1.png", 0.367271393669832m, 1, 1 },
+                    { 2, "This is a description for product 2", "Product 2", "images/products/sb-ang2.png", 0.5450624614681m, 2, 2 },
+                    { 3, "This is a description for product 3", "Product 3", "images/products/sb-core1.png", 0.721758242194663m, 3, 3 },
+                    { 4, "This is a description for product 4", "Product 4", "images/products/sb-core2.png", 0.818318842450313m, 4, 4 },
+                    { 5, "This is a description for product 5", "Product 5", "images/products/sb-react1.png", 0.561551412773914m, 5, 5 }
                 });
 
             migrationBuilder.CreateIndex(
