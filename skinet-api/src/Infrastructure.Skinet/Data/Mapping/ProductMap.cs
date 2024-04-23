@@ -40,7 +40,7 @@ public class ProductMap : IEntityTypeConfiguration<Product>
                 Name = "Product 1",
                 Description = "This is a description for product 1",
                 Price = (decimal)new Random().NextDouble(),
-                Picture = "https://image.com/placeholder.jpg",
+                Picture = "images/products/sb-ang1.png",
                 ProductBrandId = 1,
                 ProductTypeId = 1
             },
@@ -50,7 +50,7 @@ public class ProductMap : IEntityTypeConfiguration<Product>
                 Name = "Product 2",
                 Description = "This is a description for product 2",
                 Price = (decimal)new Random().NextDouble(),
-                Picture = "https://image.com/placeholder.jpg",
+                Picture = "images/products/sb-ang2.png",
                 ProductBrandId = 2,
                 ProductTypeId = 2
             },
@@ -60,7 +60,7 @@ public class ProductMap : IEntityTypeConfiguration<Product>
                 Name = "Product 3",
                 Description = "This is a description for product 3",
                 Price = (decimal)new Random().NextDouble(),
-                Picture = "https://image.com/placeholder.jpg",
+                Picture = "images/products/sb-core1.png",
                 ProductBrandId = 3,
                 ProductTypeId = 3
             },
@@ -70,7 +70,7 @@ public class ProductMap : IEntityTypeConfiguration<Product>
                 Name = "Product 4",
                 Description = "This is a description for product 4",
                 Price = (decimal)new Random().NextDouble(),
-                Picture = "https://image.com/placeholder.jpg",
+                Picture = "images/products/sb-core2.png",
                 ProductBrandId = 4,
                 ProductTypeId = 4
             },
@@ -80,7 +80,7 @@ public class ProductMap : IEntityTypeConfiguration<Product>
                 Name = "Product 5",
                 Description = "This is a description for product 5",
                 Price = (decimal)new Random().NextDouble(),
-                Picture = "https://image.com/placeholder.jpg",
+                Picture = "images/products/sb-react1.png",
                 ProductBrandId = 5,
                 ProductTypeId = 5
             }
