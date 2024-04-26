@@ -33,3 +33,10 @@ https://stackoverflow.com/questions/24079133/what-is-the-difference-between-dbse
 - Add real products for demonstration
 
 - Implements CQRS using generic repository and specification without the mediart
+
+- Move the ISpecification interface to the interfaces folder in the domain
+
+- Add a traversal validation middleware
+
+- validate why the not found route are not working.
+
