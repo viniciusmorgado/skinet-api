@@ -1,6 +1,5 @@
 using System.Reflection;
 using Domain.Skinet.Entities;
-using Infrastructure.Skinet.Data.Mapping;
 using Microsoft.EntityFrameworkCore;
 
 namespace Api.Skinet.Data;
