@@ -1,0 +1,60 @@
+services:
+  api:
+    container_name: api-skinet
+    image: vinimorgado/skinet-api:latest
+    networks:
+      - skinet-network
+    ports:
+      - "10401:10401"
+    depends_on: 
+      - sql-database
+
+  sql-database:
+    container_name: database-skinet
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    networks:
+      - skinet-network
+    environment:
+      ACCEPT_EULA: Y
+      MSSQL_SA_PASSWORD: <YourStrong@Passw0rd>
+    volumes:
+      - sql-server-data:/var/opt/mssql/data
+    restart: unless-stopped
+    user: root
+  
+  memory-db:
+    container_name: redis-skinet
+    image: redis:alpine3.19
+    volumes: 
+      - redis-db-data:/var/opt/redis/data
+    networks:
+      - skinet_network
+  
+  broker:
+    container_name: rabbitmq-skinet
+    image: rabbitmq:3.9.29-management
+    networks:
+      - skinet_network
+
+  # jaeger:
+
+  # prometheus:
+
+  # grafana:
+  
+  # seq-datalust:
+  
+  # watchtower-webhook:
+  
+  # telegram-notifier-bot:
+
+volumes:
+  sql-server-data:  
+  redis-db-data:
+
+networks:
+  skinet-network:
+    name: skinet-network
+    driver: bridge
+    external: false
+
