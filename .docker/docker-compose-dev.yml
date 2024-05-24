@@ -1,41 +1,81 @@
 services:
   sql-database:
-     container_name: database-skinet
-     image: mcr.microsoft.com/mssql/server:2022-latest
-     networks:
-       - skinet-network
-     ports:
+    container_name: database-skinet
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    networks:
+      - skinet-network
+    environment:
+      ACCEPT_EULA: Y
+      MSSQL_SA_PASSWORD: <YourStrong@Passw0rd>
+    volumes:
+      - sql-database-persistence:/var/opt/mssql/data
+    restart: unless-stopped
+    user: root
+    ports:
       - "1433:1433"
-     environment:
-       ACCEPT_EULA: Y
-       MSSQL_SA_PASSWORD: <YourStrong@Passw0rd>
-     volumes:
-       - sql-server-data:/var/opt/mssql/data
-     restart: always
-     user: root
+      - "4022:4022"
+      - "135:135"
+      - "1434:1434"
+      - "1434:1434/udp"
+
+  memory-database:
+    container_name: redis-skinet
+    image: redis:alpine3.19
+    volumes: 
+      - memory-database-persistence:/var/opt/redis/data
+    networks:
+      - skinet-network
+    ports:
+      - "6379:6379"
+
+  broker:
+    container_name: rabbitmq-skinet
+    image: rabbitmq:3.9.29-management
+    networks:
+      - skinet-network
+    hostname: "rabbitmq-skinet"
+    environment:
+      RABBITMQ_DEFAULT_USER: "rabbitmq"
+      RABBITMQ_DEFAULT_PASS: "rabbitmq"
+      RABBITMQ_DEFAULT_VHOST: "/"
+    ports:
+      - "15672:15672"
+      - "5672:5672"
+    #volumes:
+      #- "./enabled_plugins:/etc/rabbitmq/enabled_plugins"
+      #- "./rabbitmq.config:/etc/rabbitmq/rabbitmq.config:ro"
+      #- "./autocluster-0.4.1.ez:/usr/lib/rabbitmq/lib/rabbitmq_server-3.5.5/plugins/autocluster-0.4.1.ez"
+
+  jaeger:
+    container_name: jaeger-skinet
+    image: jaegertracing/all-in-one:1.57
+    networks:
+      - skinet-network
+    ports:
+      - "6831:6831/udp"
+      - "5778:5778"
+      - "16686:16686"
+      - "6832:6832/udp"
+      - "14268:14268"
+
+  # prometheus:
+
+  # grafana:
   
-  # memory-db:
-  #   container_name: redis_skinet
-  #   image: redis:alpine3.19
-  #   volumes: 
-  #     - redis-db-data:/var/opt/redis/data
-  #   networks:
-  #     - skinet_network
+  # seq-datalust:
   
-  # broker:
-  #   container_name: rabbitmq_skinet
-  #   image: rabbitmq:3.9.29-management
-  #   networks:
-  #     - skinet_network
+  # watchtower-webhook:
+  
+  # telegram-notifier-bot:
 
 volumes:
-  sql-server-data:  
-  # redis-db-data:
-
+  sql-database-persistence:
+    name: database-skinet-data
+  memory-database-persistence:
+    name: redis-skinet-data
 
 networks:
   skinet-network:
     name: skinet-network
     driver: bridge
     external: false
-

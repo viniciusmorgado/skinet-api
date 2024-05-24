@@ -7,7 +7,8 @@ services:
     ports:
       - "10401:10401"
     depends_on: 
-      - sql-database
+      sql-database:
+        condition: service_started
 
   sql-database:
     container_name: database-skinet
@@ -18,26 +19,34 @@ services:
       ACCEPT_EULA: Y
       MSSQL_SA_PASSWORD: <YourStrong@Passw0rd>
     volumes:
-      - sql-server-data:/var/opt/mssql/data
+      - sql-database-persistence:/var/opt/mssql/data
     restart: unless-stopped
     user: root
-  
-  memory-db:
+
+  memory-database:
     container_name: redis-skinet
     image: redis:alpine3.19
     volumes: 
-      - redis-db-data:/var/opt/redis/data
+      - memory-database-persistence:/var/opt/redis/data
     networks:
-      - skinet_network
-  
+      - skinet-network
+
   broker:
     container_name: rabbitmq-skinet
     image: rabbitmq:3.9.29-management
     networks:
-      - skinet_network
+      - skinet-network
+    hostname: "rabbitmq-skinet"
+    environment:
+      RABBITMQ_DEFAULT_USER: "rabbitmq"
+      RABBITMQ_DEFAULT_PASS: "rabbitmq"
+      RABBITMQ_DEFAULT_VHOST: "/"
 
-  # jaeger:
-
+  jaeger:
+    container_name: jaeger-skinet
+    image: jaegertracing/all-in-one:1.57
+    networks:
+      - skinet-network
   # prometheus:
 
   # grafana:
@@ -49,12 +58,13 @@ services:
   # telegram-notifier-bot:
 
 volumes:
-  sql-server-data:  
-  redis-db-data:
+  sql-database-persistence:
+    name: database-skinet-data
+  memory-database-persistence:
+    name: redis-skinet-data
 
 networks:
   skinet-network:
     name: skinet-network
     driver: bridge
     external: false
-

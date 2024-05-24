@@ -17,6 +17,28 @@
     <Content Include="appsettings.development.json" CopyToOutputDirectory="Always" CopyToPublishDirectory="Always" />
   </ItemGroup>
 
+  <PropertyGroup Condition=" '$(Configuration)'=='Release-Linux-x64' ">
+    <RuntimeIdentifier>linux-x64</RuntimeIdentifier>
+  </PropertyGroup>
+  
+  <PropertyGroup Condition=" '$(Configuration)'=='Debug-Linux-x64' ">
+    <RuntimeIdentifier>linux-x64</RuntimeIdentifier>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+  </PropertyGroup>
+  
+  <PropertyGroup Condition=" '$(Configuration)'=='Release-Windows-x64' ">
+        <RuntimeIdentifier>win-x64</RuntimeIdentifier>
+  </PropertyGroup>
+  
+  <PropertyGroup Condition=" '$(Configuration)'=='Debug-Windows-x64' ">
+    <RuntimeIdentifier>win-x64</RuntimeIdentifier>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+  </PropertyGroup>
+
   <ItemGroup>
     <PackageReference Include="AutoMapper" Version="13.0.1" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.4">
