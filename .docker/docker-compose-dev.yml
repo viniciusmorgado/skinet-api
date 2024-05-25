@@ -10,6 +10,7 @@ services:
     volumes:
       - sql-database-persistence:/var/opt/mssql/data
     restart: unless-stopped
+    MSSQL_PID: "Developer"
     user: root
     ports:
       - "1433:1433"

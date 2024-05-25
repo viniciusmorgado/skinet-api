@@ -84,7 +84,7 @@ public class ProductMap : IEntityTypeConfiguration<Product>
                 ProductBrandId = 5,
                 ProductTypeId = 5
             }
-#endif
         );
+#endif
     }
 }

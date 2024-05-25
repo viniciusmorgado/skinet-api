@@ -18,6 +18,7 @@ services:
     environment:
       ACCEPT_EULA: Y
       MSSQL_SA_PASSWORD: <YourStrong@Passw0rd>
+      MSSQL_PID: "Express"
     volumes:
       - sql-database-persistence:/var/opt/mssql/data
     restart: unless-stopped
