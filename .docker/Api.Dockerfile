@@ -10,4 +10,7 @@ FROM mcr.microsoft.com/dotnet/aspnet:8.0-alpine3.19 AS runtime
 RUN apk add icu-dev;
 WORKDIR /app
 COPY --from=build /app/output .
+
+EXPOSE 10401
 ENTRYPOINT ["dotnet", "Api.Skinet.dll"]
+# CMD ["--port", "10401"]
