@@ -1,5 +1,6 @@
 using Api.Skinet.Controllers.Base;
 using Api.Skinet.DTOs;
+using Api.Skinet.Errors;
 using AutoMapper;
 using Domain.Skinet.Entities;
 using Domain.Skinet.Interfaces;
@@ -23,11 +24,15 @@ public class ProductsController( IGenericRepository<Product> _productRepository,
     }
 
     [HttpGet("{id:int}")]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(typeof(ApiResponse), StatusCodes.Status404NotFound)]
     public async Task<ActionResult<ProductsToReturnDTO>> GetProductById(int id)
     {
         var spec = new ProductsWithTypesAndBrandsSpec(id);
         var product = await _productRepository.GetEntityWithSpecsAsync(spec);
 
+        if(product == null) return NotFound(new ApiResponse(404));
+        
         return Ok(_mapper.Map<Product, ProductsToReturnDTO>(product));
     }
 

@@ -1,6 +1,6 @@
 using Api.Skinet.Controllers.Base;
-using Api.Skinet.Data;
 using Api.Skinet.Errors;
+using Infrastructure.Skinet.Data;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Api.Skinet.Controllers;
@@ -21,6 +21,7 @@ public class BuggyController(StoreContext context) : BaseController
         return Ok();
     }
 
+    // TODO: This shit is wrong!
     [HttpGet("server-error")]
     public ActionResult ServerErrorRequest()
     {

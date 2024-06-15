@@ -1,13 +1,14 @@
 ﻿using Microsoft.EntityFrameworkCore.Migrations;
+using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 #nullable disable
 
 #pragma warning disable CA1814 // Prefer jagged arrays over multidimensional
 
-namespace Infrastructure.Skinet.Data.Migrations
+namespace Infrastructure.Skinet.Migrations
 {
     /// <inheritdoc />
-    public partial class InitialMigration : Migration
+    public partial class Begin : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -16,9 +17,9 @@ namespace Infrastructure.Skinet.Data.Migrations
                 name: "ProductBrands",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false)
+                    Id = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    Name = table.Column<string>(type: "character varying(100)", maxLength: 100, nullable: false)
                 },
                 constraints: table =>
                 {
@@ -29,9 +30,9 @@ namespace Infrastructure.Skinet.Data.Migrations
                 name: "ProductTypes",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false)
+                    Id = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    Name = table.Column<string>(type: "character varying(100)", maxLength: 100, nullable: false)
                 },
                 constraints: table =>
                 {
@@ -42,14 +43,14 @@ namespace Infrastructure.Skinet.Data.Migrations
                 name: "Products",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
-                    Description = table.Column<string>(type: "nvarchar(300)", maxLength: 300, nullable: false),
-                    Price = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
-                    Picture = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    ProductTypeId = table.Column<int>(type: "int", nullable: false),
-                    ProductBrandId = table.Column<int>(type: "int", nullable: false)
+                    Id = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    Name = table.Column<string>(type: "character varying(100)", maxLength: 100, nullable: false),
+                    Description = table.Column<string>(type: "character varying(300)", maxLength: 300, nullable: false),
+                    Price = table.Column<decimal>(type: "numeric(18,2)", nullable: false),
+                    Picture = table.Column<string>(type: "text", nullable: false),
+                    ProductTypeId = table.Column<int>(type: "integer", nullable: false),
+                    ProductBrandId = table.Column<int>(type: "integer", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -97,11 +98,11 @@ namespace Infrastructure.Skinet.Data.Migrations
                 columns: new[] { "Id", "Description", "Name", "Picture", "Price", "ProductBrandId", "ProductTypeId" },
                 values: new object[,]
                 {
-                    { 1, "This is a description for product 1", "Product 1", "images/products/sb-ang1.png", 0.367271393669832m, 1, 1 },
-                    { 2, "This is a description for product 2", "Product 2", "images/products/sb-ang2.png", 0.5450624614681m, 2, 2 },
-                    { 3, "This is a description for product 3", "Product 3", "images/products/sb-core1.png", 0.721758242194663m, 3, 3 },
-                    { 4, "This is a description for product 4", "Product 4", "images/products/sb-core2.png", 0.818318842450313m, 4, 4 },
-                    { 5, "This is a description for product 5", "Product 5", "images/products/sb-react1.png", 0.561551412773914m, 5, 5 }
+                    { 1, "This is a description for product 1", "Product 1", "images/products/sb-ang1.png", 0.169889285825772m, 1, 1 },
+                    { 2, "This is a description for product 2", "Product 2", "images/products/sb-ang2.png", 0.477062243023867m, 2, 2 },
+                    { 3, "This is a description for product 3", "Product 3", "images/products/sb-core1.png", 0.683599240284728m, 3, 3 },
+                    { 4, "This is a description for product 4", "Product 4", "images/products/sb-core2.png", 0.558487098171239m, 4, 4 },
+                    { 5, "This is a description for product 5", "Product 5", "images/products/sb-react1.png", 0.411972244496337m, 5, 5 }
                 });
 
             migrationBuilder.CreateIndex(

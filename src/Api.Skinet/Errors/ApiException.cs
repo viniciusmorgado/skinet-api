@@ -1,5 +1,3 @@
-using Microsoft.Identity.Client;
-
 namespace Api.Skinet.Errors;
 
 public class ApiException( int statusCode, 
