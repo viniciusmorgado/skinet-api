@@ -67,8 +67,8 @@ services:
 volumes:
   postgres:
     name: postgres-skinet
-  redis:
-    name: redis-skinet
+  # redis:
+  #   name: redis-skinet
 
 networks:
   skinet-network:

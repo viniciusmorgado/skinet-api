@@ -17,8 +17,21 @@ public class Specification<T> : ISpecification<T>
     public Expression<Func<T, bool>> Criteria { get; }
     public List<Expression<Func<T, object>>> Includes { get; } = [];
 
-    protected void AddInclude(Expression<Func<T, object>> includeExpression)
+    public Expression<Func<T, object>> OrderBy { get; private set; }
+    public Expression<Func<T, object>> OrderByDescending { get; private set; }
+
+    protected void AddInclude(Expression<Func<T, object>> orderByExpression)
     {
-        Includes.Add(includeExpression);
+        OrderBy = orderByExpression;
+    }
+
+    protected void AddOrderByDescending(Expression<Func<T, object>> orderByDescending)
+    {
+        OrderByDescending = orderByDescending;
+    }
+
+    protected void AddOrderBy(Expression<Func<T, object>> orderBy)
+    {
+        OrderBy = orderBy;
     }
 }

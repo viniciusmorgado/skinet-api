@@ -6,10 +6,12 @@ namespace Domain.Skinet.Specs;
 
 public class ProductsWithTypesAndBrandsSpec : Specification<Product>
 {
-    public ProductsWithTypesAndBrandsSpec()
+    public ProductsWithTypesAndBrandsSpec(string sort)
     {
         AddInclude(x => x.ProductType);
         AddInclude(x => x.ProductBrand);
+        AddOrderBy(x => x.Name);
+        // AddOrderByDescending(x => x.Name);
     }
 
     public ProductsWithTypesAndBrandsSpec(int id) : base(x => x.Id.Equals(id))

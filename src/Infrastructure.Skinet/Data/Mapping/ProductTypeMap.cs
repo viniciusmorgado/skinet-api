@@ -18,27 +18,22 @@ public class ProductTypeMap : IEntityTypeConfiguration<ProductType>
             new ProductType
             {
                 Id = 1,
-                Name = "Product Type 1"
+                Name = "Boards"
             },
             new ProductType
             {
                 Id = 2,
-                Name = "Product Type 2"
+                Name = "Hats"
             },
             new ProductType
             {
                 Id = 3,
-                Name = "Product Type 3"
+                Name = "Boots"
             },
             new ProductType
             {
                 Id = 4,
-                Name = "Product Type 4"
-            },
-            new ProductType
-            {
-                Id = 5,
-                Name = "Product Type 5"
+                Name = "Gloves"
             }
         );
 #endif

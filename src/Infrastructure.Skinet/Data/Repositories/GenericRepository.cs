@@ -1,4 +1,3 @@
-using Api.Skinet.Data;
 using Domain.Skinet.Entities.Base;
 using Domain.Skinet.Interfaces;
 using Domain.Skinet.Specs;

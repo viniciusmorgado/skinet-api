@@ -1,9 +1,10 @@
 // using Api.Skinet.Data;
 // using Domain.Skinet.Entities;
 // using Domain.Skinet.Interfaces;
+// using Infrastructure.Skinet.Data;
 // using Microsoft.EntityFrameworkCore;
 
-// namespace Infrastructure.Skinet.Repositories;
+// namespace Infrastructure.Skinet.Data.Repositories;
 
 // public class ProductRepository(StoreContext _context) : IProductRepository
 // {

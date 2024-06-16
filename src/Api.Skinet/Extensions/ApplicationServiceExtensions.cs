@@ -26,9 +26,9 @@ public static class ApplicationServiceExtensions
             options.InvalidModelStateResponseFactory = actionContext => 
             {
                 var errors = actionContext.ModelState.Where(e => e.Value.Errors.Count > 0)
-                                                    .SelectMany(x => x.Value.Errors)
-                                                    .Select(x => x.ErrorMessage)
-                                                    .ToArray();
+                                                     .SelectMany(x => x.Value.Errors)
+                                                     .Select(x => x.ErrorMessage)
+                                                     .ToArray();
 
                 var errorResponse = new ApiValidationErrorResponse
                 {

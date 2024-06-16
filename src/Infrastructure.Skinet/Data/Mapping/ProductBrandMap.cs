@@ -18,27 +18,32 @@ public class ProductBrandMap : IEntityTypeConfiguration<ProductBrand>
             new ProductBrand
             {
                 Id = 1,
-                Name = "Product Brand 1"
+                Name = "Angular"
             },
             new ProductBrand
             {
                 Id = 2,
-                Name = "Product Brand 2"
+                Name = "NetCore"
             },
             new ProductBrand
             {
                 Id = 3,
-                Name = "Product Brand 3"
+                Name = "VS Code"
             },
             new ProductBrand
             {
                 Id = 4,
-                Name = "Product Brand 3"
+                Name = "React"
             },
             new ProductBrand
             {
                 Id = 5,
-                Name = "Product Brand 4"
+                Name = "Typescript"
+            },
+            new ProductBrand
+            {
+                Id = 6,
+                Name = "Redis"
             }
         );
 #endif
