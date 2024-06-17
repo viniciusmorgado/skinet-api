@@ -1,7 +1,7 @@
 using Api.Skinet.Errors;
 using Domain.Skinet.Interfaces;
 using Infrastructure.Skinet.Data;
-using Infrastructure.Skinet.Repositories;
+using Infrastructure.Skinet.Data.Repositories;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 

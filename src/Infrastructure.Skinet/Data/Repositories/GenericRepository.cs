@@ -4,7 +4,7 @@ using Domain.Skinet.Specs;
 using Infrastructure.Skinet.Data;
 using Microsoft.EntityFrameworkCore;
 
-namespace Infrastructure.Skinet.Repositories;
+namespace Infrastructure.Skinet.Data.Repositories;
 
 public class GenericRepository<T>(StoreContext _context) : IGenericRepository<T> where T : Entity
 {
@@ -15,7 +15,7 @@ public class GenericRepository<T>(StoreContext _context) : IGenericRepository<T>
 
     public async Task<T> GetEntityWithSpecsAsync(ISpecification<T> spec)
     {
-        return await ApplySpecification(spec).FirstOrDefaultAsync(); 
+        return await ApplySpecification(spec).FirstOrDefaultAsync();
     }
 
     public async Task<IReadOnlyList<T>> GetEntityListAsync()
