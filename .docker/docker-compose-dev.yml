@@ -1,3 +1,13 @@
+# Development composer
+
+# Notes:
+
+# - This composer only contain the necessary services for development, for production environment use docker-compose.yml as reference.
+
+# - up and down scripts execute the stack creation and deletion, also purging the volumes, they are written to be use during development tests, if you need to persist data remove the "--volumes" parameter from the down.ps1 script.
+
+# - to run the scripts on Unix systems just rename them to up.sh/down.sh and give chmod execution permissions, or install powershell for linux. (linux-only: https://learn.microsoft.com/en-us/powershell/scripting/install/installing-powershell-on-linux)
+
 services:
   postgres:
     container_name: postgres-skinet

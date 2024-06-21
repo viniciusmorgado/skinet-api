@@ -1,3 +1,5 @@
+# Production composer
+
 services:
   api:
     container_name: api-skinet
@@ -10,7 +12,7 @@ services:
       sql-database:
         condition: service_started
 
-  sql-database:
+  postgres:
     container_name: database-skinet
     image: mcr.microsoft.com/mssql/server:2022-latest
     networks:
@@ -24,7 +26,7 @@ services:
     restart: unless-stopped
     user: root
 
-  memory-database:
+  redis:
     container_name: redis-skinet
     image: redis:alpine3.19
     volumes: 
@@ -32,7 +34,7 @@ services:
     networks:
       - skinet-network
 
-  broker:
+  rabbitmq:
     container_name: rabbitmq-skinet
     image: rabbitmq:3.9.29-management
     networks:

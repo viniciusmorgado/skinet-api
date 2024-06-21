@@ -7,10 +7,10 @@ RUN dotnet restore;
 RUN dotnet publish --configuration Release --output output --runtime linux-x64;
 
 FROM mcr.microsoft.com/dotnet/aspnet:8.0-alpine3.19 AS runtime
-RUN apk add icu-dev;
+RUN apk add icu-dev nano;
 WORKDIR /app
 COPY --from=build /app/output .
 
 EXPOSE 10401
 ENTRYPOINT ["dotnet", "Api.Skinet.dll"]
-# CMD ["--port", "10401"]
+CMD ["--port", "10401"]
