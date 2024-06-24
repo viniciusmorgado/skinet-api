@@ -6,6 +6,7 @@ namespace Domain.Skinet.Specs;
 public class ProductsWithTypesAndBrandsSpec : Specification<Product>
 {
     public ProductsWithTypesAndBrandsSpec(ProductsParamsSpec productParams) : base(x => 
+        (string.IsNullOrEmpty(productParams.Search) || x.Name.ToLower().Contains (productParams.Search)) &&
         (!productParams.BrandId.HasValue || x.ProductBrandId == productParams.BrandId) && 
         (!productParams.TypeId.HasValue || x.ProductTypeId == productParams.TypeId))
     {
