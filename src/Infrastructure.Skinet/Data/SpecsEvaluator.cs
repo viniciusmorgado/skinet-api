@@ -12,22 +12,22 @@ public class SpecsEvaluator<TEntity> where TEntity : Entity
 
         if (spec.Criteria != null)
         {
-            query = query.Where(spec.Criteria); // p => p.ProducTypeId.Equals(id);
+          query = query.Where(spec.Criteria); // p => p.ProducTypeId.Equals(id);
         }
 
         if (spec.OrderBy != null)
         {
-            query = query.OrderBy(spec.OrderBy);
+          query = query.OrderBy(spec.OrderBy);
         }
 
         if (spec.OrderByDescending != null)
         {
-            query = query.OrderByDescending(spec.OrderByDescending);
+          query = query.OrderByDescending(spec.OrderByDescending);
         }
 
         if (spec.IsPagingEnabled)
         {
-            query = query.Skip(spec.Skip).Take(spec.Take);
+          query = query.Skip(spec.Skip).Take(spec.Take);
         }
 
         query = spec.Includes.Aggregate(query, (current, include) => current.Include(include));
