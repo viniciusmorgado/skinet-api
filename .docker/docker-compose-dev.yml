@@ -10,11 +10,12 @@
 
 services:
   postgres:
-    container_name: postgres-skinet
+    container_name: database-skinet
     image: postgres:12.19-bullseye
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: skinet
       PGDATA: /data/postgres
     volumes:
        - postgres:/data/postgres
@@ -24,61 +25,35 @@ services:
       - skinet-network
     restart: unless-stopped
 
-  # redis:
-  #   container_name: redis-skinet
-  #   image: redis:alpine3.19
-  #   volumes: 
-  #     - memory-database-persistence:/var/opt/redis/data
-  #   networks:
-  #     - skinet-network
-  #   ports:
-  #     - "6379:6379"
+  redis:
+    container_name: redis-skinet
+    image: redis:alpine3.19
+    volumes: 
+      - memory-database-persistence:/var/opt/redis/data
+    networks:
+      - skinet-network
+    ports:
+      - "6379:6379"
 
-  # rabbitmq:
-  #   container_name: rabbitmq-skinet
-  #   image: rabbitmq:3.9.29-management
-  #   networks:
-  #     - skinet-network
-  #   hostname: "rabbitmq-skinet"
-  #   environment:
-  #     RABBITMQ_DEFAULT_USER: "rabbitmq"
-  #     RABBITMQ_DEFAULT_PASS: "rabbitmq"
-  #     RABBITMQ_DEFAULT_VHOST: "/"
-  #   ports:
-  #     - "15672:15672"
-  #     - "5672:5672"
-    #volumes:
-      #- "./enabled_plugins:/etc/rabbitmq/enabled_plugins"
-      #- "./rabbitmq.config:/etc/rabbitmq/rabbitmq.config:ro"
-      #- "./autocluster-0.4.1.ez:/usr/lib/rabbitmq/lib/rabbitmq_server-3.5.5/plugins/autocluster-0.4.1.ez"
-
-  # jaeger:
-  #   container_name: jaeger-skinet
-  #   image: jaegertracing/all-in-one:1.57
-  #   networks:
-  #     - skinet-network
-  #   ports:
-  #     - "6831:6831/udp"
-  #     - "5778:5778"
-  #     - "16686:16686"
-  #     - "6832:6832/udp"
-  #     - "14268:14268"
-
-  # prometheus:
-
-  # grafana:
-  
-  # seq-datalust:
-  
-  # watchtower-webhook:
-  
-  # telegram-notifier-bot:
+  rabbitmq:
+    container_name: rabbitmq-skinet
+    image: rabbitmq:3.9.29-management
+    networks:
+      - skinet-network
+    hostname: "rabbitmq-skinet"
+    environment:
+      RABBITMQ_DEFAULT_USER: "rabbitmq"
+      RABBITMQ_DEFAULT_PASS: "rabbitmq"
+      RABBITMQ_DEFAULT_VHOST: "/"
+    ports:
+      - "15672:15672"
+      - "5672:5672"
 
 volumes:
   postgres:
     name: postgres-skinet
-  # redis:
-  #   name: redis-skinet
+  redis:
+    name: redis-skinet
 
 networks:
   skinet-network:

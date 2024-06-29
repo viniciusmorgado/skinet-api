@@ -1,70 +1,50 @@
 # Production composer
 
 services:
-  api:
-    container_name: api-skinet
+  application-skinet:
+    container_name: application-skinet
     image: vinimorgado/skinet-api:latest
     networks:
       - skinet-network
     ports:
       - "10401:10401"
     depends_on: 
-      sql-database:
+      postgres-skinet:
         condition: service_started
 
-  postgres:
-    container_name: database-skinet
-    image: mcr.microsoft.com/mssql/server:2022-latest
-    networks:
-      - skinet-network
+  postgres-skinet:
+    container_name: postgres-skinet
+    image: postgres:12.19-bullseye
     environment:
-      ACCEPT_EULA: Y
-      MSSQL_SA_PASSWORD: <YourStrong@Passw0rd>
-      MSSQL_PID: "Express"
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: skinet
+      PGDATA: /data/postgres
     volumes:
-      - sql-database-persistence:/var/opt/mssql/data
+       - postgres:/data/postgres
+    networks:
+      - skinet-network
     restart: unless-stopped
-    user: root
 
-  redis:
-    container_name: redis-skinet
-    image: redis:alpine3.19
-    volumes: 
-      - memory-database-persistence:/var/opt/redis/data
+  seq-skinet:
+    container_name: seq-skinet
+    image: datalust/seq:latest
     networks:
       - skinet-network
-
-  rabbitmq:
-    container_name: rabbitmq-skinet
-    image: rabbitmq:3.9.29-management
-    networks:
-      - skinet-network
-    hostname: "rabbitmq-skinet"
+    restart: unless-stopped
+    volumes:
+    - seq:/data
     environment:
-      RABBITMQ_DEFAULT_USER: "rabbitmq"
-      RABBITMQ_DEFAULT_PASS: "rabbitmq"
-      RABBITMQ_DEFAULT_VHOST: "/"
-
-  jaeger:
-    container_name: jaeger-skinet
-    image: jaegertracing/all-in-one:1.57
-    networks:
-      - skinet-network
-  # prometheus:
-
-  # grafana:
-  
-  # seq-datalust:
-  
-  # watchtower-webhook:
-  
-  # telegram-notifier-bot:
+      - ACCEPT_EULA=Y
+    ports:
+      - "10402:80"
+      # - "9110:5341"
 
 volumes:
-  sql-database-persistence:
-    name: database-skinet-data
-  memory-database-persistence:
-    name: redis-skinet-data
+  postgres:
+    name: postgres-skinet
+  seq:
+    name: seq-skinet
 
 networks:
   skinet-network:

@@ -25,9 +25,9 @@ public class ProductsController( IGenericRepository<Product> _productRepository,
         var data = _mapper.Map<IReadOnlyList<Product>, IReadOnlyList<ProductsToReturnDTO>>(products); 
         
         return Ok(new Pagination<ProductsToReturnDTO>(
-            productParams.PageIndex, 
-            productParams.PageSize, 
-            totalItems, 
+            productParams.PageIndex,
+            productParams.PageSize,
+            totalItems,
             data
         ));
     }
