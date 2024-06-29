@@ -50,7 +50,7 @@ The project has two redundant observability tools that can be deploy in separate
 **Logging Server** - Basic logging system and visualization with [Serilog](https://serilog.net/) and [SEQ](https://datalust.co/seq)
 - **Data Flow**: Serilog (ingestion/generation) -> Feed -> SEQ (Visualization)
 
-<IMAGE>
+![A screenshot of the Seq logging tool displaying various log events for an application named "Api.Skinet". The logs include timestamps, log levels, and detailed messages. The interface shows the hosting status, connection details to a PostgreSQL database, and application environment settings. The log messages indicate that the application has started hosting on http://127.0.0.1:10401, connected to a PostgreSQL server, and executed several database commands. The sidebar contains navigation options for events, dashboards, alerts, data, settings, and support, along with a search function for active tool windows.](https://github.com/viniciusmorgado/skinet-api/blob/develop/src/Api.Skinet/wwwroot/images/github/seq.png)
 
 **Telemetry Server** - Advanced telemetry information and visualization with [Grafana](https://grafana.com/), [Prometheus](https://prometheus.io/) and [OpenTelemetry](https://opentelemetry.io/).
 - **Data Flow**: OTL/Prometheus (ingestion/generation) -> Feed -> Grafana/Prometheus (Visualization)
