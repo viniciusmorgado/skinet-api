@@ -1,6 +1,6 @@
 # Skinet - E-commerce
 
-Backend of ecommerce platform for selling ski gear using C# ASP.NET
+Backend of an e-commerce platform for selling ski gear using C# ASP.NET
 
 ## Requirements
 
@@ -21,7 +21,7 @@ Clone repository:
 git clone https://github.com/viniciusmorgado/skinet-api.git
 ```
 
-Run the docker compose for development, this will setup the services needs for development-only (RabbitMQ, Postgres and Redis)
+Run the Docker Compose for development. This will set up the necessary services for development only, including RabbitMQ, Postgres, and Redis.
 
 ```
 cd skinet-api/.docker
@@ -29,23 +29,24 @@ cd skinet-api/.docker
 ```
 docker compose -f docker-compose-dev.yml -p "skinet-stack" up -d;
 ```
-Obs: Some linux distros packages maybe use docker-compose instead of "docker compose".
+Note: Some Linux distributions may use docker-compose instead of docker compose.
 
-Alternatively you can just run the up.ps1 script on Windows, or rename it to up.sh and run on Unix systems:
+Alternatively, you can run the up.ps1 script on Windows, or rename it to up.sh and run it on Unix systems."
+
 ```
 .\up.ps1
 ```
 
 ## Project Files
 
-- .docker - Contains all relevant files and scripts to run docker container environment.
-    * Api.Dockerfile - Responsible to containerize the application.
-    * docker-compose-dev.yml - Only setup the services strictly need for development, in this case: RabbitMQ, Redis and Postgres, tools for telemetry and the application itself are not run for this composer, you should run the application via vscode or terminal for debugging.
-    * docker-compose.yml - Setup all the services necessary for run the backend on production including the application itself and observability tools.
+- .docker - Contains all relevant files and scripts to run the Docker container environment.
+    * Api.Dockerfile - Responsible for containerizing the application.
+    * docker-compose-dev.yml - Sets up only the services strictly needed for development, including RabbitMQ, Redis, and Postgres. Tools for telemetry and the application itself are not run with this compose file; you should run the application via VSCode or terminal for debugging.
+    * docker-compose.yml - Sets up all the services necessary to run the backend in production, including the application itself and observability tools.
 
 ## Observability
 
-The project has two redundant observability tools that can be deploy in separate servers to generate, collect, management, and export telemetry data like traces, metrics, and logs.
+This project includes two redundant observability tools that can be deployed on separate servers. These tools generate, collect, manage, and export telemetry data such as traces, metrics, and logs.
 
 **Logging Server** - Basic logging system and visualization with [Serilog](https://serilog.net/) and [SEQ](https://datalust.co/seq)
 - **Data Flow**: Serilog (ingestion/generation) -> Feed -> SEQ (Visualization)
@@ -55,30 +56,30 @@ The project has two redundant observability tools that can be deploy in separate
 **Telemetry Server** - Advanced telemetry information and visualization with [Grafana](https://grafana.com/), [Prometheus](https://prometheus.io/) and [OpenTelemetry](https://opentelemetry.io/).
 - **Data Flow**: OTL/Prometheus (ingestion/generation) -> Feed -> Grafana/Prometheus (Visualization)
 
-Obs: Grafana are used in combinaton with Prometheus to improve data collection, but we also have dashboards with data coming directly from prometheus ingestion engine itself completly independent from OTL.
+Note: Grafana is used in combination with Prometheus to enhance data collection. However, we also have dashboards with data coming directly from the Prometheus ingestion engine, completely independent of OTL.
 
 <IMAGE>
 
 ### Architecture
 
-Under construction
+Work in Progress
 
 ### Important Design Patterns Considerations
 
-Under construction
+Work in Progress
 
 ### Testing
 
-Under construction
+Work in Progress
 
 ### Deployment Pipelines
 
-Under construction
+Work in Progress
 
 ### Infrastructure as Code
 
-Under construction
+Work in Progress
 
 ### Production Setup
 
-Under construction
+Work in Progress
