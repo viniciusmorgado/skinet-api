@@ -30,7 +30,7 @@ public class StoreContext : DbContext
     #if RELEASE
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
-        optionsBuilder.UseNpgsql("Host=postgres-skinet; Port=5432; Database=skinet; Username=postgres; Password=postgres");
+        optionsBuilder.UseNpgsql("Host=postgres; Port=5432; Database=skinet; Username=postgres; Password=postgres");
     }
     #endif
 }

@@ -1,16 +1,26 @@
-# Development composer
-
-# Notes:
-
-# - This composer only contain the necessary services for development, for production environment use docker-compose.yml as reference.
-
-# - up and down scripts execute the stack creation and deletion, also purging the volumes, they are written to be use during development tests, if you need to persist data remove the "--volumes" parameter from the down.ps1 script.
-
-# - to run the scripts on Unix systems just rename them to up.sh/down.sh and give chmod execution permissions, or install powershell for linux. (linux-only: https://learn.microsoft.com/en-us/powershell/scripting/install/installing-powershell-on-linux)
-
 services:
+  application:
+    container_name: application-${STACK_NAME}
+    image: vinimorgado/skinet-api:latest
+    networks:
+      - skinet-network
+    ports:
+      - "10401:10401"
+    depends_on: 
+      postgres-skinet:
+        condition: service_started
+    read_only: true
+    deploy:
+      resources:
+        limits:
+          cpus: '0.50'         # Limit the container to use at most 50% of a CPU
+          memory: 512M         # Limit the container to use at most 512MB of RAM
+        reservations:
+          cpus: '0.25'         # Reserve 25% of a CPU for the container
+          memory: 256M  
+
   postgres:
-    container_name: database-skinet
+    container_name: postgres-${STACK_NAME}
     image: postgres:12.19-bullseye
     environment:
       POSTGRES_USER: postgres
@@ -19,41 +29,44 @@ services:
       PGDATA: /data/postgres
     volumes:
        - postgres:/data/postgres
-    ports:
-      - "5432:5432"
     networks:
       - skinet-network
     restart: unless-stopped
+    deploy:
+      resources:
+        limits:
+          cpus: '0.50'         # Limit the container to use at most 50% of a CPU
+          memory: 512M         # Limit the container to use at most 512MB of RAM
+        reservations:
+          cpus: '0.25'         # Reserve 25% of a CPU for the container
+          memory: 256M  
 
-  redis:
-    container_name: redis-skinet
-    image: redis:alpine3.19
-    volumes: 
-      - memory-database-persistence:/var/opt/redis/data
+  seq-datalust:
+    container_name: seq-${STACK_NAME}
+    image: datalust/seq:latest
     networks:
       - skinet-network
-    ports:
-      - "6379:6379"
-
-  rabbitmq:
-    container_name: rabbitmq-skinet
-    image: rabbitmq:3.9.29-management
-    networks:
-      - skinet-network
-    hostname: "rabbitmq-skinet"
+    restart: unless-stopped
+    volumes:
+    - seq:/data
     environment:
-      RABBITMQ_DEFAULT_USER: "rabbitmq"
-      RABBITMQ_DEFAULT_PASS: "rabbitmq"
-      RABBITMQ_DEFAULT_VHOST: "/"
+      - ACCEPT_EULA=Y
     ports:
-      - "15672:15672"
-      - "5672:5672"
+      - "10402:80"
+    deploy:
+      resources:
+        limits:
+          cpus: '0.50'         # Limit the container to use at most 50% of a CPU
+          memory: 512M         # Limit the container to use at most 512MB of RAM
+        reservations:
+          cpus: '0.25'         # Reserve 25% of a CPU for the container
+          memory: 256M  
 
 volumes:
   postgres:
     name: postgres-skinet
-  redis:
-    name: redis-skinet
+  seq:
+    name: seq-skinet
 
 networks:
   skinet-network:

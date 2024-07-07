@@ -1,19 +1,20 @@
-# Production composer
+name: skinet
 
 services:
-  application-skinet:
-    container_name: application-skinet
+  application:
+    container_name: application-${STACK_NAME}
     image: vinimorgado/skinet-api:latest
     networks:
       - skinet-network
     ports:
       - "10401:10401"
     depends_on: 
-      postgres-skinet:
+      postgres:
         condition: service_started
+    read_only: true
 
-  postgres-skinet:
-    container_name: postgres-skinet
+  postgres:
+    container_name: postgres-${STACK_NAME}
     image: postgres:12.19-bullseye
     environment:
       POSTGRES_USER: postgres
@@ -26,8 +27,8 @@ services:
       - skinet-network
     restart: unless-stopped
 
-  seq-skinet:
-    container_name: seq-skinet
+  seq-datalust:
+    container_name: seq-${STACK_NAME}
     image: datalust/seq:latest
     networks:
       - skinet-network
@@ -38,7 +39,6 @@ services:
       - ACCEPT_EULA=Y
     ports:
       - "10402:80"
-      # - "9110:5341"
 
 volumes:
   postgres:
