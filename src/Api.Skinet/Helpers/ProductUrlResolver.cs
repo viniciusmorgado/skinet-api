@@ -14,7 +14,6 @@ public class ProductUrlResolver(IConfiguration configuration) : IValueResolver<P
     {
         if(!string.IsNullOrEmpty(source.Picture))
         {   
-            //TODO: Check why the appsettings.development.json config are completely ignore.
             return configuration["ApiUrl"] + source.Picture;
         }
 

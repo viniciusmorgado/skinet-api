@@ -24,9 +24,7 @@ public class ExceptionMiddleware( RequestDelegate next
                 ? new ApiException((int)HttpStatusCode.InternalServerError, exception.Message, exception.StackTrace.ToString()) :
                 new ApiException((int)HttpStatusCode.InternalServerError);
 
-            // TODO: Cache and reuse 'JsonSerializerOptions' instance.
             var options = new JsonSerializerOptions{PropertyNamingPolicy = JsonNamingPolicy.CamelCase};
-
             var json = JsonSerializer.Serialize(response, options);
 
             await context.Response.WriteAsync(json);

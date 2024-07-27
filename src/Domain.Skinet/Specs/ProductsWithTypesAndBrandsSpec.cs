@@ -19,7 +19,6 @@ public class ProductsWithTypesAndBrandsSpec : Specification<Product>
         {
             switch (productParams.Sort)
             {
-                // both via price
                 case "ASC":
                     AddOrderBy(p => p.Price);
                     break;
