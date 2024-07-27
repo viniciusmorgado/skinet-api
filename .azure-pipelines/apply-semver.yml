@@ -18,6 +18,7 @@ trigger:
   branches:
     include:
       - main
+
 variables:
   GitVersion.SemVer: ""
 
@@ -30,37 +31,32 @@ jobs:
   - job: CalculateVersion
     displayName: "Versioning"
     steps:
-      # Checkout with persist credentials
       - checkout: self
         persistCredentials: true
         lfs: true
 
-      # Install GitVersion
       - task: gitversion/setup@0
         displayName: Install GitVersion
         inputs:
           versionSpec: "5.x"
 
-      # Unshallowing the repositoruy
       - task: PowerShell@2
         displayName: "Unshallow repository"
         inputs:
           targetType: "inline"
           script: |
             git fetch --unshallow --tags
-      # Determine the semantic version
+
       - task: gitversion/execute@0
         displayName: Calculating version
         inputs:
           useConfigFile: True
           configFilePath: ".azure-pipelines/config/gitversion.yml"
 
-      # Set the calculated SemVer as an output variable
       - pwsh: |
           Write-Host "##vso[task.setvariable variable=CalculatedSemVer]$(GitVersion.SemVer)"
         displayName: Set Output Variable
 
-      # Update Build.BuildNumber to use SemVer, as by default it uses FullSemVer
       - pwsh: |
           Write-Host "##vso[build.updatebuildnumber]$(GitVersion.SemVer)"
       - task: PowerShell@2
