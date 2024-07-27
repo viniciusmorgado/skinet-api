@@ -1,0 +1,74 @@
+name: Versioning
+trigger:
+  paths:
+    include:
+      - src/*
+    exclude:
+      - README.md
+      - .gitignore
+      - .gitattributes
+      - .editorconfig
+      - .vscode/*
+      - .azure-pipelines/*
+      - .terraform/*
+      - .docs/*
+      - .docker/*
+      - .git/*
+      - .vscode/*
+  branches:
+    include:
+      - main
+variables:
+  GitVersion.SemVer: ""
+
+pool:
+  name: "VPS"
+  demands:
+    - agent.name -equals VPS-001
+
+jobs:
+  - job: CalculateVersion
+    displayName: "Versioning"
+    steps:
+      # Checkout with persist credentials
+      - checkout: self
+        persistCredentials: true
+        lfs: true
+
+      # Install GitVersion
+      - task: gitversion/setup@0
+        displayName: Install GitVersion
+        inputs:
+          versionSpec: "5.x"
+
+      # Unshallowing the repositoruy
+      - task: PowerShell@2
+        displayName: "Unshallow repository"
+        inputs:
+          targetType: "inline"
+          script: |
+            git fetch --unshallow --tags
+      # Determine the semantic version
+      - task: gitversion/execute@0
+        displayName: Calculating version
+        inputs:
+          useConfigFile: True
+          configFilePath: ".azure-pipelines/config/gitversion.yml"
+
+      # Set the calculated SemVer as an output variable
+      - pwsh: |
+          Write-Host "##vso[task.setvariable variable=CalculatedSemVer]$(GitVersion.SemVer)"
+        displayName: Set Output Variable
+
+      # Update Build.BuildNumber to use SemVer, as by default it uses FullSemVer
+      - pwsh: |
+          Write-Host "##vso[build.updatebuildnumber]$(GitVersion.SemVer)"
+      - task: PowerShell@2
+        displayName: "Apply version to tag"
+        inputs:
+          targetType: "inline"
+          script: |
+            git config --global user.name "BSource Consultoria"
+            git config --global user.email "devops@bsource.com.br"
+            git tag -a v$(Build.BuildNumber) -m "Version $(Build.BuildNumber)"
+            git push origin v$(Build.BuildNumber)

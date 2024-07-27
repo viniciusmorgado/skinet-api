@@ -1,0 +1,62 @@
+trigger:
+  tags:
+    include:
+      - v*.*.*
+pool:
+  name: "VPS"
+  demands:
+    - agent.name -equals VPS-001
+variables:
+  CanBuild: false
+  AppVersion: $[replace(variables['Build.SourceBranchName'], 'v', '')]
+jobs:
+  - job: Build
+    displayName: "Build and publish docker"
+    steps:
+      - script: |
+          npm install -g semver
+        displayName: "Install Semver"
+      - script: |
+          if semver $(Build.SourceBranchName); then
+            echo "##vso[task.setvariable variable=CanBuild]true"
+            echo "Versão semântica válida."
+          else
+            echo "Versão semântica inválida: $(Build.SourceBranchName)"
+          fi
+        displayName: "Validate semantic version"
+      - checkout: self
+        condition: eq(variables['CanBuild'], 'true')
+        persistCredentials: true
+        displayName: "Checkout source code"
+      - task: replacetokens@5
+        condition: eq(variables['CanBuild'], 'true')
+        displayName: "Replace app.information.json"
+        inputs:
+          targetFiles: |
+            **/app.information.json
+            **/*.html
+            **/*.js
+          encoding: "auto"
+          tokenPattern: "default"
+          writeBOM: true
+          actionOnMissing: "warn"
+          keepToken: true
+          actionOnNoFiles: "continue"
+          enableTransforms: false
+          enableRecursion: false
+          useLegacyPattern: true
+          enableTelemetry: false
+
+      - task: Docker@2
+        displayName: "Docker Login"
+        inputs:
+          containerRegistry: "Docker Hub"
+          command: "login"
+
+      - task: Bash@3
+        displayName: "Build & Push"
+        inputs:
+          targetType: "inline"
+          script: |
+            docker build -f .\.docker\Api.Dockerfile . -t vinimorgado/skinet-api:latest;
+            docker push vinimorgado/skinet-api:latest;

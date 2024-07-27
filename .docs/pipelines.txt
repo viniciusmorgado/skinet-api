@@ -1,0 +1,11 @@
+infrastructure-deploy.yml - deploy IaC infrastructure like Cloud Formation or Terraform
+
+apply-semver.yml - Calculate the semver and save the value to a global variable
+
+build-and-publish.yml - Build docker or/app and publish to server or container registry, also apply to the binary metadate and the container tag the versioning of the apply-semver pipeline.
+
+carbon-impact-assess.yml - Measure the carbon footprint of the software version
+
+vulnerability-scan.yml - Verifiy the project for security vulnerability
+
+dependency-doctor.yml - Verify all dependencies for outdated packages
